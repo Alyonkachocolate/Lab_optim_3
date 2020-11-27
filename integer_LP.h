@@ -23,7 +23,7 @@ void integer_LP(std::vector<std::vector<double>> &A,
     else {
         double x = ans.is_double;
         Answer answer = ans;
-        std::cout << "We have a fractional number: " << x << std::endl;
+        std::cout << "We have a fractional number: x" << ans.x_is_d << " = " << x << std::endl;
         std::cout << "Branching" << std::endl;
         {
             for (size_t i = 0; i < 60; i++) std::cout << "-";

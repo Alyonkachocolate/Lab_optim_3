@@ -14,16 +14,16 @@ bool limitation(const std::vector<std::vector<double>> &A, const std::vector<dou
 void full_enumeration(std::vector<std::vector<double>> &A,
                       const std::vector<double> &c, std::vector<double> &b,
                       std::vector<Answer> &full_enum) {
-    double x1 = 0, x2 = 0, x3 = 0;
+    int x1 = 0, x2 = 0, x3 = 0;
+    size_t k = 0;
+
     while (limitation(A, b, x1, x2, x3)) {
         while (limitation(A, b, x1, x2, x3)) {
             while (limitation(A, b, x1, x2, x3)) {
-                double F = c.at(0) * x1 + c.at(1) * x2 + c.at(2) * x3;
-                if (F - ceil(F) == 0) {
-                    Answer ans(x1, x2, x3);
-                    ans.print();
-                    full_enum.emplace_back(ans);
-                }
+                k++;
+                Answer ans(x1, x2, x3);
+                ans.print();
+                full_enum.emplace_back(ans);
                 x3 += 1;
             }
             x3 = 0;
@@ -33,6 +33,7 @@ void full_enumeration(std::vector<std::vector<double>> &A,
         x3 = 0;
         x1 += 1;
     }
+    std::cout << "We get integer solutions: " << k << std::endl;
 }
 
 #endif//LAB_OPTIM_3_FULL_ENUMERATION_H
